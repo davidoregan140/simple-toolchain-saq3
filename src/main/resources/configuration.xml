@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+
+<!-- trying constructor DI but not a work :( -->
+<!-- <bean id = "newspaper" class = "ie.cit.soft8027.saq3.domain.Newspaper">
+		<constructor-arg name = "title" value = "The CIT Times"></constructor-arg>
+		<constructor-arg name = "editorsList">
+			<list>
+				<bean id = "sportsEditor" class = "ie.cit.soft8027.saq3.domain.Editor"></bean>
+				<bean id = "entertainmentEditor" class = "ie.cit.soft8027.saq3.domain.Editor"></bean>
+				<bean id = "businessEditor" class = "ie.cit.soft8027.saq3.domain.Editor"></bean>
+				<bean id = "newsEditor" class = "ie.cit.soft8027.saq3.domain.Editor"></bean>
+			</list>
+		</constructor-arg>
+</bean> -->
+
+
+
+<!-- trying setter DI but not a work :( -->
+<!-- <bean id = "newspaper" class = "ie.cit.soft8027.saq3.domain.Newspaper">
+		<property name = "title" value = "The CIT Times"></property>
+		<property name = "editorsList">
+			<list>
+				<bean id = "sportsEditor" class = "ie.cit.soft8027.saq3.domain.Editor"></bean>
+				<bean id = "entertainmentEditor" class = "ie.cit.soft8027.saq3.domain.Editor"></bean>
+				<bean id = "businessEditor" class = "ie.cit.soft8027.saq3.domain.Editor"></bean>
+				<bean id = "newsEditor" class = "ie.cit.soft8027.saq3.domain.Editor"></bean>
+			</list>
+		</property>
+</bean>
+ -->
+
+
+<!-- Using constructor DI to inject a <list> of editor beans with 'ref' pointing to the beans by id-->
+
+<!-- trying stackoverflow eg 
+https://stackoverflow.com/questions/7446301/autowire-reference-beans-into-list-by-type -->
+<bean id = "newspaper" class = "ie.cit.soft8027.saq3.domain.Newspaper">
+		<constructor-arg name = "title" value = "The CIT Times"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean = "sportsEditor" />
+				<ref bean = "entertainmentEditor" />
+				<ref bean = "businessEditor" />
+				<ref bean = "newsEditor" />
+			</list>
+		</constructor-arg>
+</bean>
+
+
+<!-- Four editor beans, one for each type of editor -->
+
+<bean id = "sportsEditor" class = "ie.cit.soft8027.saq3.domain.Editor">
+		<constructor-arg name = "speciality" value = "Sports"></constructor-arg>
+		<constructor-arg name = "firstName" value = "Jim"></constructor-arg>
+		<constructor-arg name = "lastName" value = "Harrington"></constructor-arg>
+		<constructor-arg name = "emailAddress" value = "jh@cittimes.ie"></constructor-arg>
+</bean>
+
+<bean id = "entertainmentEditor" class = "ie.cit.soft8027.saq3.domain.Editor">
+		<constructor-arg name = "speciality" value = "Entertainment"></constructor-arg>
+		<constructor-arg name = "firstName" value = "John"></constructor-arg>
+		<constructor-arg name = "lastName" value = "Buzzard"></constructor-arg>
+		<constructor-arg name = "emailAddress" value = "jb@cittimes.ie"></constructor-arg>
+</bean>
+
+<bean id = "businessEditor" class = "ie.cit.soft8027.saq3.domain.Editor">
+		<constructor-arg name = "speciality" value = "Business"></constructor-arg>
+		<constructor-arg name = "firstName" value = "Jackie"></constructor-arg>
+		<constructor-arg name = "lastName" value = "Greatguns"></constructor-arg>
+		<constructor-arg name = "emailAddress" value = "jg@cittimes.ie"></constructor-arg>
+</bean>
+
+<bean id = "newsEditor" class = "ie.cit.soft8027.saq3.domain.Editor">
+		<constructor-arg name = "speciality" value = "News"></constructor-arg>
+		<constructor-arg name = "firstName" value = "Alice"></constructor-arg>
+		<constructor-arg name = "lastName" value = "O'Leary"></constructor-arg>
+		<constructor-arg name = "emailAddress" value = "aol@cittimes.ie"></constructor-arg>
+</bean>
+
+
+
+
+</beans>
+
