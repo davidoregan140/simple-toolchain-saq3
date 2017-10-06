@@ -1,20 +1,21 @@
 package ie.cit.soft8027.saq3.domain;
 
 import java.util.List;
+import java.util.Set;
 
 public class Newspaper {
 
 	private String title;
-	private List <Editor> editorsList;
+	private Set <Editor> editorSet;
 	
 	public Newspaper() {
 		
 	}
 
-	public Newspaper(String title, List editorsList) {
+	public Newspaper(String title, Set editorSet) {
 		super();
 		this.title = title;
-		this.editorsList = editorsList;
+		this.editorSet = editorSet;
 		
 	}
 
@@ -28,17 +29,17 @@ public class Newspaper {
 		this.title = title;
 	}
 
-	public List<Editor> getEditorsList() {
-		return editorsList;
+	public Set<Editor> geteditorSet() {
+		return editorSet;
 	}
 
-	public void setEditorsList(List<Editor> editorsList) {
-		this.editorsList = editorsList;
+	public void seteditorSet(Set<Editor> editorSet) {
+		this.editorSet = editorSet;
 	}
 
 	@Override
 	public String toString() {
-		return title + "\n" + editorsList.toString();
+		return title + "\n" + editorSet.toString();
 		
 	}
 	
